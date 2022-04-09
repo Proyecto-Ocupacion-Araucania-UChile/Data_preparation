@@ -2,19 +2,16 @@
 
 FOLDER=~/Bureau/data/jpg 
 ERROR="$FOLDER/error.txt"
-CURRENT=$PWD
 
 if ! [[ -d "$FOLDER" ]]|| ! [[ -e $ERROR ]]
 then
 	mkdir -p $FOLDER
 	touch $ERROR
 else
-    rm -f "$FOLDER/*"
-    touch $ERROR
+    rm -f "$FOLDER/*.jpg"
 fi
 
-for img in "$CURRENT/*.tif"; do
-    filename=$(basename -- "$img")
-    filename="${filename%.*}"
-    convert $img "$FOLDER/$filename.jpg" 2> $ERROR
-done
+for img in "$PWD"/*.tif; do 
+    filename="$(basename "${img%.tif}")"
+    convert "$img" "$FOLDER/$filename.jpg"
+done 2>> $ERROR
