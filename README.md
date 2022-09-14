@@ -1,3 +1,3 @@
 # Data preparation of project
 
-Steps scripts to check, order, select files 
+Worfklow to convert images with `convert.sh` and correct inventory tabular data
